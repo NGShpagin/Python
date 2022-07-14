@@ -1,13 +1,11 @@
 # Найти наибольший простой делитель числа
 
-a = int(input('Введите число: '))
-if a % 2 == 0:
-    print(f'Наибольший делитель для числа {a}: {int(a / 2)};   {a} / {int(a / 2)} = {int(a / (a / 2))}')
-elif a % 3 == 0:
-    print(f'Наибольший делитель для числа {a}: {int(a / 3)};   {a} / {int(a / 3)} = {int(a / (a / 3))}')
-elif a % 5 == 0:
-    print(f'Наибольший делитель для числа {a}: {int(a / 5)};   {a} / {int(a / 5)} = {int(a / (a / 5))}')
-elif a % 7 == 0:
-    print(f'Наибольший делитель для числа {a}: {int(a / 7)};   {a} / {int(a / 7)} = {int(a / (a / 7))}')
+num = int(input('Введите число: '))
+max_div = -1
+for i in range(2, num-1):
+    if num % i == 0:
+        max_div = i
+if max_div == -1:
+    print(f'число {num} является простым числом')
 else:
-    print(f'число {a} является простым числом')
+    print(f'Наибольший делитель для числа {num}: {max_div};   {num} / {max_div} = {int(num / (max_div))}')
