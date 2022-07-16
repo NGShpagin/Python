@@ -4,7 +4,8 @@ import time
 
 # Вариант решение с range
 
-def find_num(c, d): # с - от, d - до, условие: размер чисел с и d одинаковый
+
+def find_num(c, d):  # с - от, d - до, условие: размер чисел с и d одинаковый
     b = ''
     a1 = str(c)
     a2 = str(d)
@@ -35,6 +36,7 @@ def find_num(c, d): # с - от, d - до, условие: размер чисе
         count += 1
     return int(b)
 
+
 print(find_num(220, 317))
 
 
@@ -62,7 +64,6 @@ print(find_num(220, 317))
 #         b += a[-1]
 #         count += 1
 #     return int(b)
-
 
 
 # def find_num(c, d): # с - от, d - до
@@ -99,7 +100,6 @@ print(find_num(220, 317))
 #     return int(b)
 
 # print(find_num(91, 113))
-
 
 
 # Варинат решения (Антона)
