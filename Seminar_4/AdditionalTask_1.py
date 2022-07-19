@@ -11,8 +11,7 @@ path = '/Users/nikolaishpagin/Desktop/GeekBrains/Программист (1 че�
 # with open(path, 'a') as file:
 #     file.write('\nAlekseev: 42786.98')
 
-
-def readDict(path):
+def readDict(path: str) -> dict:
     my_dict = {}
     with open(path, 'r') as file:
         a = file.readlines()
@@ -31,7 +30,7 @@ def readDict(path):
     return my_dict
 
 
-def minSal(my_dict, salary):
+def minSal(my_dict: dict, salary: int) -> float:
     minSal = []
     for key in my_dict:
         if my_dict[key] < salary:
