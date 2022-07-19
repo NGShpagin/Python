@@ -2,7 +2,7 @@
 # Напишите программу, которая выведет список неповторяющихся элементов исходной последовательности.
 
 
-def find_uniq(my_list):
+def find_uniq(my_list) -> list:
     new_list = []
     for i in my_list:
         if i in new_list:
@@ -13,4 +13,5 @@ def find_uniq(my_list):
 
 
 my_list = [2, 5, 'as', 7, 67, 'as', 7, 5, 'me']
-print(find_uniq(my_list))
+print('Изначальный список:', my_list)
+print('Итоговый список', find_uniq(my_list))
