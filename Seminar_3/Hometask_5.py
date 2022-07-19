@@ -11,7 +11,7 @@ def fib(n):
     else:
         if n > 0:
             return fib(n-1) + fib(n-2)
-        if n < 0:
+        elif n < 0:
             return fib(n+2) - fib(n+1)
 
 

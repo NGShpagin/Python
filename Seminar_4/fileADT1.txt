@@ -1,0 +1,5 @@
+Ivanov: 23543.12
+Petrov: 13749.32
+Nikolaev: 19982.45
+Sidorov: 17561.23
+Alekseev: 25786.98
