@@ -13,42 +13,34 @@ with open(path2, 'w') as file:
     file.write('9 * x**5 + 9 * x**3 + 4 * x**2 - 5 * x + 3')
 
 
-with open(path1, 'r') as file1, open(path2, 'r') as file2, open(path3, 'w') as file3:
+with open(path1, 'r') as file1, open(path2, 'r') as file2:
     a = file1.read().split()
     b = file2.read().split()
-    dict1 = {}
-    dict2 = {}
-    for i in range(len(a)):
-        if i == 0 and a[i].count('x'):
-            dict1[a[i]] = 1
-        elif i == 1 and a[i].count('x') and a[i-1] == -1:
-            dict1[a[i]] = -1
+
+
+def create_dict(string: str) -> dict:
+    my_dict = {}
+    for i in range(len(string)):
+        if i == 0 and string[i].count('x'):
+            my_dict[string[i]] = 1
+        elif i == 1 and string[i].count('x') and string[i-1] == -1:
+            my_dict[string[i]] = -1
         elif a[i].count('x'):
-            if (i-3 in range(len(a))) and a[i-3] == '-':
-                dict1[a[i]] = -1*int(a[i-2])
-            elif (i-2 in range(len(a))) and a[i-2].isdigit() == False:
-                if a[i-1] == '-':
-                    dict1[a[i]] = -1
-                elif a[i-1] == '+':
-                    dict1[a[i]] = 1
+            if (i-3 in range(len(string))) and string[i-3] == '-':
+                my_dict[string[i]] = -1*int(string[i-2])
+            elif (i-2 in range(len(string))) and string[i-2].isdigit() == False:
+                if string[i-1] == '-':
+                    my_dict[string[i]] = -1
+                elif string[i-1] == '+':
+                    my_dict[string[i]] = 1
             else:
-                dict1[a[i]] = int(a[i-2])
-        elif a[i].isdigit() and ((i+1 in range(len(a)) and a[i+1] != '*') or i == len(a)-1):
-            dict1['num'] = int(a[i])
+                my_dict[string[i]] = int(string[i-2])
+        elif string[i].isdigit() and ((i+1 in range(len(string)) and string[i+1] != '*') or i == len(string)-1):
+            my_dict['num'] = int(string[i])
+    return my_dict
 
-    for i in range(len(b)):
-        if i == 0 and a[i].count('x'):
-            dict1[a[i]] = 1
-        elif i == 1 and a[i].count('x') and a[i-1] == -1:
-            dict1[a[i]] = -1
-        elif b[i].count('x'):
-            if (i-3 in range(len(b))) and b[i-3] == '-':
-                dict2[b[i]] = -1*int(b[i-2])
-            else:
-                dict2[b[i]] = int(b[i-2])
-        if b[i].isdigit() and ((i+1 in range(len(b))) and b[i+1] != '*' or i == len(b)-1):
-            dict2['num'] = int(b[i])
 
+def sum_dict(dict1: dict, dict2: dict) -> str:
     string = ''
     for key in dict1.keys():
         if key in dict2.keys():
@@ -79,9 +71,17 @@ with open(path1, 'r') as file1, open(path2, 'r') as file2, open(path3, 'w') as f
         if (i == 0 or i == 1) and (string[i] == '+' or string[i] == '-'):
             string = string[3:]
     new_string = string.replace(' + -', ' - ')
-    file3.write(new_string)
+    return new_string
 
 
-print(dict1)
-print(dict2)
-print(new_string)
+my_dict1 = create_dict(a)
+my_dict2 = create_dict(b)
+
+
+with open(path3, 'w') as file3:
+    file3.write(sum_dict(my_dict1, my_dict2))
+
+
+print(my_dict1)
+print(my_dict2)
+print(sum_dict(my_dict1, my_dict2))
