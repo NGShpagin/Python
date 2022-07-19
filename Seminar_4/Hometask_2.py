@@ -1,40 +1,52 @@
 # Задайте натуральное число N.
 # Напишите программу, которая составит список простых множителей числа N.
 
-num = int(input('Введите число: '))
-my_list = []
+num = int(input('Введите натуральное число: '))
 
 
-def mnog(num):
+def check_num(num: int) -> bool:
     if num == 2:
-        my_list.append(num)
+        return True
     else:
         for i in range(2, num):
             if num % i == 0:
-                # print(f'Число не является протым: {num} / {i} =', int(num / i))
-                break
+                return False
             elif i == num-1:
-                my_list.append(num)
-                # print(f'Число {num} является простым')
+                return True
 
 
-for i in range(2, num):
-    if num % i == 0:
-        mnog(i)
-
-result = 1
-new_list = []
-while result < num:
-    for i in my_list:
-        if result * i > num:
+def create_list(num: int) -> list:
+    my_list = []
+    for i in range(2, num):
+        if num % i == 0:
+            if check_num(i) == True:
+                my_list.append(i)
+            else:
+                continue
+        else:
             continue
-        elif result * i <= num:
-            result *= i
-            new_list.append(i)
+    return my_list
 
 
+my_list = create_list(num)
+new_list = []
+
+if len(my_list) != 0:
+    result = num
+    while check_num(result) == False or result == 2 or result == 3:
+        for i in my_list:
+            if result % i == 0:
+                result //= i
+                new_list.append(i)
+            else:
+                continue
+else:
+    print(f'Число {num} - простое')
+    exit()
+
+print(new_list)
 print(f'Список простых множителей числа {num}:', my_list)
 print('Итог:', new_list[0], end='')
 for i in range(1, len(new_list)):
     print(f' * {new_list[i]}', end='')
-print(' =', result)
+print(' =', num)
