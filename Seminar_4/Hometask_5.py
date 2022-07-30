@@ -6,10 +6,10 @@ path1 = '/Users/nikolaishpagin/Desktop/GeekBrains/Программист (1 че
 path2 = '/Users/nikolaishpagin/Desktop/GeekBrains/Программист (1 четверть)/Знакомство с Python/Seminar_4/fileHT5_2.txt'
 path3 = '/Users/nikolaishpagin/Desktop/GeekBrains/Программист (1 четверть)/Знакомство с Python/Seminar_4/fileHT5_3.txt'
 
-with open(path1, 'w') as file:
-    file.write('7 * x**5 - 6 * x**3 - 7 * x**2 + 18 * x + 2')
+# Каждый знак в многочлене записывается через пробле, кроме возведения в степень x
 
-with open(path2, 'w') as file:
+with open(path1, 'w') as file:
+    file.write('7 * x**5 - 6 * x**3 - 7 * x**2 + 18 * x + 2') 
     file.write('9 * x**5 + 9 * x**3 + 4 * x**2 - 5 * x + 3')
 
 
