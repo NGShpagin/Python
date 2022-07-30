@@ -55,8 +55,8 @@ def decision(my_list):
     return res
 
 
-# my_string = input('Введите арифметическое выражение: ')
-s = '24/3-3+5*3/7+3+5'
+s = input('Введите арифметическое выражение: ')
+# s = '24/3-3+5*3/7+3+5'
 my_list = calc(s)
 print(calc(s))
 print(eval(s))

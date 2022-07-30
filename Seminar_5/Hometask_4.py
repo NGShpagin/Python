@@ -13,8 +13,6 @@
 #     return my_dict
 
 
-from unittest import result
-
 
 def inRLE(my_string):
     result_string = '' 
