@@ -3,9 +3,8 @@
 # data_keeper.py -> functions.py -> logger.py -> 
 # output_keeper.py
 
-from functions import result
-from input_data import inputData
 
-a, znak, b = inputData()
+from tkinter import *
+import controller as ct
 
-print(result(znak, a, b))
+ct.root()

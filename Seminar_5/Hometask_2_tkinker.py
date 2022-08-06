@@ -7,37 +7,32 @@
 # b) Подумайте как наделить бота ""интеллектом""
 # # tkinter
 
-import tkinter as tk
+from tkinter import *
 import random
 
 
 def click_button_plvspl():
-    namesWindow = tk.Toplevel(window_1)
-    namesWindow.title("Крестики - Нолики")
-    namesWindow.geometry("300x300")
-    lbl_pl1 = tk.Label(namesWindow, text="Введите имя игрока 1:").pack()
-    entry_lb1 = tk.Entry(namesWindow).pack()
-    lbl_pl2 = tk.Label(namesWindow, text="Введите имя игрока 2:").pack()
-    entry_lb2 = tk.Entry(namesWindow).pack()
-    btn_start = tk.Button(
-        namesWindow,
-        text="Начать игру",
-        width=15,
-        height=1,
-        bg="blue",
-        fg="black",
-        # command=start_game_vs_player
-    ).pack()
+    global game_run
+    game_run = False
+    window_2
+
+
+def start_game_vs_player():
+    window_2.destroy()
+    global first_pl
+    global second_pl
+    first_pl = entry_lb1.get()
+    second_pl = entry_lb2.get()
 
 
 def click_button_plvsbot():
-    nameWindow = tk.Toplevel(window_1)
+    nameWindow = Toplevel(window_1)
     nameWindow.title("Крестики - Нолики")
     nameWindow.geometry("300x300")
-    lbl_pl1 = tk.Label(nameWindow, text="Введите имя игрока:").pack()
-    entry_lb1 = tk.Entry(nameWindow)
+    lbl_pl1 = Label(nameWindow, text="Введите имя игрока:").pack()
+    entry_lb1 = Entry(nameWindow)
     entry_lb1.pack()
-    btn_start = tk.Button(
+    btn_start = Button(
         nameWindow,
         text="Начать игру",
         width=15,
@@ -49,7 +44,7 @@ def click_button_plvsbot():
 
 
 def start_game_vs_bot():
-    vsBotGameWindow = tk.Toplevel(window_1)
+    vsBotGameWindow = Toplevel(window_1)
     vsBotGameWindow.title("Крестики - Нолики. Player VS Bot")
     vsBotGameWindow.geometry("300x300")
     game_run = True
@@ -57,7 +52,7 @@ def start_game_vs_bot():
     for row in range(3):
         line = []
         for column in range(3):
-            button = tk.Button(
+            button = Button(
                 vsBotGameWindow, text=' ', 
                 width=4, height=2, 
                 font=('Verdana', 20, 'bold'),
@@ -141,39 +136,75 @@ def start_game_vs_bot():
         global cross_count
         cross_count = 0
 
-    new_game_button = tk.Button(vsBotGameWindow, text='Новая игра', width='20', command=new_game)
+    new_game_button = Button(vsBotGameWindow, text='Новая игра', width='20', command=new_game)
     new_game_button.grid(row=3, column=0, columnspan=3)
 
 
-window_1 = tk.Tk()
+window_1 = Tk()
+window_1.title("Крестики-Нолики")
+game_run = True
 
-greeting = tk.Label(
+greeting = Label(
+    window_1,
     text="Добро пожаловать в игру!",
     fg="red",
     bg="black", 
     width=0,
-    height=0
-)
-greeting.pack()
+    height=0)
+greeting.grid(row=0, column=0, columnspan=2)
 
-btn_plvspl = tk.Button(
+my_lbl = Label(window_1, text=' ')
+my_lbl.grid(row=1, column=0, columnspan=2)
+
+btn_plvspl = Button(
+    window_1,
     text="Player VS Player",
     width=15,
     height=1,
     bg="blue",
     fg="black",
-    command=click_button_plvspl
-)
-btn_plvspl.pack()
+    command=click_button_plvspl)
+btn_plvspl.grid(row=2, column=1)
 
-btn_plvsbott = tk.Button(
+btn_plvsbott = Button(
+    window_1,
     text="Player VS Bot",
     width=15,
     height=1,
     bg="blue",
     fg="black",
-    command=click_button_plvsbot
-)
-btn_plvsbott.pack()
+    command=click_button_plvsbot)
+btn_plvsbott.grid(row=2, column=0)
 
-window_1.mainloop() 
+while game_run:
+    window_1.mainloop() 
+
+
+window_2 = Tk()
+window_2.title("Крестики - Нолики")
+window_2.geometry("450x300")
+
+lbl_pl1 = Label(window_2, text="Введите имя игрока 1:", borderwidth=3)
+lbl_pl1.grid(row=0, column=0)
+
+entry_lb1 = Entry(window_2, borderwidth=5)
+entry_lb1.grid(row=0, column=1)
+
+lbl_pl2 = Label(window_2, text="Введите имя игрока 2:", borderwidth=3)
+lbl_pl2.grid(row=1, column=0)
+
+entry_lb2 = Entry(window_2, borderwidth=5)
+entry_lb2.grid(row=1, column=1)
+
+btn_start = Button(
+    window_2,
+    text="Начать игру",
+    width=15,
+    height=1,
+    bg="blue",
+    fg="black",
+    command=start_game_vs_player)
+btn_start.grid(row=2, column=0, columnspan=2)
+
+
+window_2.mainloop()

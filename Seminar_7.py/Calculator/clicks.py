@@ -1,8 +1,6 @@
 from tkinter import *
 import controller as ct
 
-
-# Functions
 def btn_click(number: int):
     current = ct.my_string.get()
     ct.my_string.delete(0, END)
@@ -59,7 +57,7 @@ def btn_oper_ostatok():
     f_num = int(first_number)
     ct.my_string.delete(0, END)
 
-def btn_oper_ravno():
+def button_oper_ravno():
     second_num = ct.my_string.get()
     ct.my_string.delete(0, END)
     
@@ -74,9 +72,3 @@ def btn_oper_ravno():
 
     if math == 'delenie':
         ct.my_string.insert(0, f_num / int(second_num))
-            
-    if math == 'stepen':
-        ct.my_string.insert(0, f_num**int(second_num))
-
-    if math == 'ostatok':
-        ct.my_string.insert(0, f_num % int(second_num))
