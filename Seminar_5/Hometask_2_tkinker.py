@@ -53,8 +53,8 @@ def start_game_vs_bot():
         line = []
         for column in range(3):
             button = Button(
-                vsBotGameWindow, text=' ', 
-                width=4, height=2, 
+                vsBotGameWindow, text=' ',
+                width=4, height=2,
                 font=('Verdana', 20, 'bold'),
                 background='lavender',
                 command=lambda row=row, column=column: click(row, column)
@@ -72,14 +72,13 @@ def start_game_vs_bot():
             if game_run and cross_count < 5:
                 computer_move()
                 check_win('O')
-    
+
     def check_win(symbol):
         for i in range(3):
             check_line(field[i][0], field[i][1], field[i][2], symbol)
             check_line(field[0][i], field[1][i], field[2][i], symbol)
         check_line(field[0][0], field[1][1], field[2][2], symbol)
         check_line(field[2][0], field[1][1], field[0][2], symbol)
-
 
     def check_line(pos1, pos2, pos3, symbol):
         if pos1['text'] == symbol and pos2['text'] == symbol and pos3['text'] == symbol:
@@ -148,7 +147,7 @@ greeting = Label(
     window_1,
     text="Добро пожаловать в игру!",
     fg="red",
-    bg="black", 
+    bg="black",
     width=0,
     height=0)
 greeting.grid(row=0, column=0, columnspan=2)
@@ -177,8 +176,7 @@ btn_plvsbott = Button(
 btn_plvsbott.grid(row=2, column=0)
 
 while game_run:
-    window_1.mainloop() 
-
+    window_1.mainloop()
 
 window_2 = Tk()
 window_2.title("Крестики - Нолики")
@@ -205,6 +203,5 @@ btn_start = Button(
     fg="black",
     command=start_game_vs_player)
 btn_start.grid(row=2, column=0, columnspan=2)
-
 
 window_2.mainloop()
